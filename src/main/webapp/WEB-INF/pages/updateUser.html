@@ -1,10 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Update USER</title>
+
+
+    <style>
+        a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: inline-block;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            display: block;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
+<h2>UPDATE USER</h2>
+<form th:action="@{/updateUser}" method="post">
+    <label for="id">ID:</label>
+    <input type="number" id="id" name="id" required>
+
+    <label for="newName">new Name:</label>
+    <input type="text" id="newName" name="newName">
+
+    <label for="newLastName">new Last Name:</label>
+    <input type="text" id="newLastName" name="newLastName">
+
+    <label for="newAge">new Age:</label>
+    <input type="number" id="newAge" name="newAge">
+
+    <button type="submit">UPDATE</button>
+</form>
+
+<div>
+    <a th:href="@{/users}" class="button">Go to USERS</a>
+</div>
 
 </body>
 </html>

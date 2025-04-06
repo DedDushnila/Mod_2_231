@@ -1,6 +1,5 @@
 package web.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import web.models.User;
 
@@ -15,10 +14,6 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager em;
 
-    @Autowired
-    public UserDaoImpl(EntityManager em) {
-        this.em = em;
-    }
 
     @Override
     public List<User> getAllUsers() {
@@ -42,7 +37,7 @@ public class UserDaoImpl implements UserDao {
             user.setLastName(lastName);
         }
 
-        if (age >= 0 && age != null) {
+        if (age != null) {
             user.setAge(age);
         }
 

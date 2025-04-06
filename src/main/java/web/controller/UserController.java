@@ -29,22 +29,16 @@ public class UserController {
 
 
     @GetMapping("/addUser")
-    public String addUser(@RequestParam String name,
-                          @RequestParam String lastName,
-                          @RequestParam Integer age) {
-        User user = new User();
-        user.setName(name);
-        user.setLastName(lastName);
-        user.setAge(age);
-//        userService.addUser(user);
+    public String showAddUserForm(Model model) {
+        model.addAttribute("user", new User());
         return "addUser";
+
     }
     @PostMapping("/addUser")
     public String addUser(@ModelAttribute User user) {
         userService.addUser(user);
-        return "redirect:/users";
+        return "/addUser";
     }
-
 
 
     @GetMapping("/updateUser")
@@ -59,7 +53,6 @@ public class UserController {
         userService.updateUser(id, newName, newLastName, newAge);
         return "redirect:/users";
     }
-
 
 
     @GetMapping("/deleteUser")
